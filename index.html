@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Jarvis AI</title>
-</head>
-<body style="background:black;color:white;text-align:center;font-family:Arial;padding-top:100px;">
-  <h1>🤖 Jarvis AI</h1>
-  <h2>Hello Boss! 👋</h2>
-  <button onclick="speak()">Talk to Jarvis</button>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jarvis AI V2</title>
 
-  <script>
-    function speak() {
-      const msg = new SpeechSynthesisUtterance("Hello Boss! Welcome to Jarvis AI.");
-      speechSynthesis.speak(msg);
-    }
-  </script>
-</body>
-</html>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#020814;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
