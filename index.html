@@ -172,20 +172,6 @@ function reply(message){
 }
 
 function talk(){
-
-const recognition =
-new(window.SpeechRecognition ||
-window.webkitSpeechRecognition)();
-
-recognition.lang="en-US";
-
-recognition.start();
-
-output.innerHTML="🎤 Listening...";
-
-recognition.onresult=function(event){
-
-const text=event.results[0][0].transcript;</script>
-
-</body>
-</html>
+    document.getElementById("output").innerHTML = "Hello Boss! Welcome back.";
+    speak("Hello Boss! Welcome back. Jarvis is working.");
+}
