@@ -122,7 +122,12 @@ right:10%;
 
 <button onclick="talk()">🎤 Talk to Jarvis</button>
 
-<div id="output">
+<div id="output"><input id="userInput" type="text" placeholder="Type your command..."
+style="width:80%;padding:12px;border-radius:25px;border:none;margin-top:20px;font-size:16px;">
+
+<br><br>
+
+<button onclick="sendMessage()">📨 Send</button>
 Waiting for your command...
 </div>
 
@@ -171,7 +176,36 @@ function reply(message){
     return "Sorry Boss, I don't understand that command yet.";
 }
 
-function talk(){
+function talk(){function sendMessage(){
+
+const input = document.getElementById("userInput").value.toLowerCase();
+
+let reply = "";
+
+if(input.includes("hello") || input.includes("hi")){
+reply = "Hello Boss! 👋";
+}
+else if(input.includes("time")){
+reply = "Current time is " + new Date().toLocaleTimeString();
+}
+else if(input.includes("date")){
+reply = "Today is " + new Date().toDateString();
+}
+else if(input.includes("how are you")){
+reply = "I'm great Boss! Ready to help you.";
+}
+else if(input.includes("open youtube")){
+window.open("https://youtube.com","_blank");
+reply = "Opening YouTube...";
+}
+else{
+reply = "Sorry Boss, I don't know that yet.";
+}
+
+document.getElementById("output").innerHTML = reply;
+speak(reply);
+
+}
     document.getElementById("output").innerHTML = "Hello Boss! Welcome back.";
     speak("Hello Boss! Welcome back. Jarvis is working.");
 }
