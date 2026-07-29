@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jarvis AI V2</title>
+<title>Jarvis AI</title>
 
 <style>
 *{
@@ -15,8 +16,176 @@ font-family:Arial,sans-serif;
 
 body{
 background:#020814;
-color:white;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+overflow:hidden;
+color:white;
+}
+
+.container{
+text-align:center;
+}
+
+.logo{
+font-size:70px;
+animation:float 2s infinite ease-in-out;
+}
+
+h1{
+font-size:40px;
+margin-top:15px;
+color:#00eaff;
+text-shadow:0 0 20px #00eaff;
+}
+
+p{
+margin:15px 0;
+font-size:20px;
+color:#ddd;
+}
+
+button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:40px;
+background:#00eaff;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 25px #00eaff;
+}
+
+button:hover{
+transform:scale(1.08);
+background:white;
+}
+
+#output{
+margin-top:30px;
+font-size:22px;
+color:#00ffcc;
+min-height:35px;
+padding:10px;
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(0,234,255,.15);
+animation:move 10s linear infinite;
+}
+
+.c1{
+width:180px;
+height:180px;
+top:10%;
+left:10%;
+}
+
+.c2{
+width:250px;
+height:250px;
+bottom:10%;
+right:10%;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes move{
+0%{transform:rotate(0deg) translateX(0);}
+50%{transform:rotate(180deg) translateX(30px);}
+100%{transform:rotate(360deg) translateX(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+
+<div class="container">
+
+<div class="logo">🤖</div>
+
+<h1>Jarvis AI</h1>
+
+<p>Hello Boss! 👋</p>
+
+<button onclick="talk()">🎤 Talk to Jarvis</button>
+
+<div id="output">
+Waiting for your command...
+</div>
+
+</div>
+
+<script>const output = document.getElementById("output");
+
+function speak(text){
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+    speech.volume = 1;
+    window.speechSynthesis.speak(speech);
+}
+
+function reply(message){
+    let msg = message.toLowerCase();
+
+    if(msg.includes("hello") || msg.includes("hi")){
+        return "Hello Boss! How can I help you?";
+    }
+
+    if(msg.includes("time")){
+        return "Current time is " + new Date().toLocaleTimeString();
+    }
+
+    if(msg.includes("date")){
+        return "Today's date is " + new Date().toDateString();
+    }
+
+    if(msg.includes("open youtube")){
+        window.open("https://youtube.com","_blank");
+        return "Opening YouTube";
+    }
+
+    if(msg.includes("open google")){
+        window.open("https://google.com","_blank");
+        return "Opening Google";
+    }
+
+    if(msg.includes("thank")){
+        return "You're welcome Boss.";
+    }
+
+    return "Sorry Boss, I don't understand that command yet.";
+}
+
+function talk(){
+
+const recognition =
+new(window.SpeechRecognition ||
+window.webkitSpeechRecognition)();
+
+recognition.lang="en-US";
+
+recognition.start();
+
+output.innerHTML="🎤 Listening...";
+
+recognition.onresult=function(event){
+
+const text=event.results[0][0].transcript;</script>
+
+</body>
+</html>
